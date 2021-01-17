@@ -14,33 +14,42 @@ RUN apt-get update && \
 
 USER $NB_UID
 
-#COPY requirements.txt /home/jovyan/
+RUN conda install -c conda-forge --yes \
+	pandas \
+	numpy \
+	matplotlib \
+	scikit-learn \
+	scikit-image \
+	scipy \
+	statsmodels \
+	seaborn \
+	plotly \
+	plotly_express \
+	nodejs \
+	"ipywidgets>=7.5" \
+	opencv \
+	imutils 
+	
+RUN	conda clean --all -y -f
 
-RUN conda install --quiet --yes -c conda-forge && \
-	pandas && \
-	numpy && \
-	matplotlib && \
-	scikit-learn && \
-	scikit-image && \
-	scipy && \
-	statsmodels && \
-	seaborn && \
-	plotly && \
-	plotly_express && \
-	nodejs && \
-	"ipywidgets>=7.5" && \
-	opencv && \
-	imutils && \
-    conda clean --all -f -y
-
-RUN jupyter labextension install && \
-	@jupyter-widgets/jupyterlab-manager && \
-	jupyterlab-plotly@4.14.3 && \
+RUN jupyter labextension install \
+	@jupyter-widgets/jupyterlab-manager \
+	jupyterlab-plotly@4.14.3 \
 	jupyterlab-execute-time
 	
 RUN jupyter lab build
 
+### ADDING jupyter lab config: ######
+RUN mkdir ~/.jupyter/lab
+RUN mkdir ~/.jupyter/lab/user-settings
+USER root
+ENV NB_UID=$NB_UID \
+        NB_GID=$NB_GID
+ADD user-settings /home/$NB_USER/.jupyter/lab/user-settings
+RUN chown -R $NB_UID:$NB_GID /home/$NB_USER/.jupyter/lab/user-settings
 
+USER $NB_UID
+#####################################
 
 EXPOSE 8888
 
