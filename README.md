@@ -10,4 +10,4 @@ docker build . -t odometer_digit_recognition --rm
 
 step 3 
 
-docker run --rm -p 8888:8888 -v "$PWD":/home/jovyan/work odometer_digit_recognition
+docker run --rm -p 8888:8888 -v "$PWD":/home/jovyan/work --name odometer_project odometer_digit_recognition
