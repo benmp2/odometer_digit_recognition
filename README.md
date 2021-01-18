@@ -3,6 +3,7 @@
 step 1
 
 git clone https://github.com/benmp2/odometer_digit_recognition
+cd odometer_digit_recognition
 
 step 2
 
