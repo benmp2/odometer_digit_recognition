@@ -1,0 +1,8 @@
+#! /bin/sh
+
+if [[ "$(docker images -q myimage:mytag 2> /dev/null)" == "" ]]; 
+then
+	docker run --rm -p 8888:8888 -v "$PWD":/home/jovyan/work --name odometer_project odometer_digit_recognition
+else
+	docker build . -t odometer_digit_recognition --rm
+fi
