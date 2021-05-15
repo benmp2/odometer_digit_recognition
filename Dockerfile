@@ -30,14 +30,13 @@ RUN conda install -c conda-forge --yes \
 	opencv \
 	imutils \
 	tesseract \
-	pytesseract
+	pytesseract \
+	jupyterlab_execute_time
 	
 RUN	conda clean --all -y -f
 
-RUN jupyter labextension install \
-	@jupyter-widgets/jupyterlab-manager \
-	jupyterlab-plotly@4.14.3 \
-	jupyterlab-execute-time
+RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager 
+RUN jupyter labextension install jupyterlab-plotly@4.14.3 
 	
 RUN jupyter lab build
 
