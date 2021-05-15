@@ -1,0 +1,10 @@
+version: "3.9"
+
+services:
+  odometer_project:
+    build: .
+    image: odometer_digit_recognition
+    ports:
+      - "8888:8888"
+    volumes:
+      - "./:/home/jovyan/work"
