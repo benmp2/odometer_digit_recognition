@@ -1,8 +1,0 @@
-#!/bin/bash
-
-if [[ "$(docker images -q odometer_digit_recognition:latest 2> /dev/null)" == "" ]]; 
-then
-	docker build . -t odometer_digit_recognition --rm
-else
-	docker run --rm -p 8888:8888 -v "$PWD":/home/jovyan/work --name odometer_project odometer_digit_recognition
-fi
