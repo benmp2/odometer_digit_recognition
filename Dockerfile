@@ -28,7 +28,9 @@ RUN conda install -c conda-forge --yes \
 	nodejs \
 	"ipywidgets>=7.5" \
 	opencv \
-	imutils 
+	imutils \
+	tesseract \
+	pytesseract
 	
 RUN	conda clean --all -y -f
 
