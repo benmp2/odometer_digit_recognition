@@ -1,14 +1,29 @@
 # odometer_digit_recognition
 
-step 1
+## Using Docker-Compose:
 
-git clone https://github.com/benmp2/odometer_digit_recognition
-cd odometer_digit_recognition
+### step 1
 
-step 2
+* git clone https://github.com/benmp2/odometer_digit_recognition
+* cd odometer_digit_recognition
 
-docker build . -t odometer_digit_recognition --rm 
+### step 2 
 
-step 3 
+* docker-compose up
 
-docker run --rm -p 8888:8888 -v "$PWD":/home/jovyan/work --name odometer_project odometer_digit_recognition
+
+
+## Using Dockerfile:
+
+### step 1
+
+* git clone https://github.com/benmp2/odometer_digit_recognition
+* cd odometer_digit_recognition
+
+### step 2
+
+* docker build . -t odometer_digit_recognition --rm 
+
+### step 3 
+
+* docker run --rm -p 8888:8888 -v "$PWD":/home/jovyan/work --name odometer_project odometer_digit_recognition
