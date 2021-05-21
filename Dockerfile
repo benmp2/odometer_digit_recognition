@@ -31,7 +31,8 @@ RUN conda install -c conda-forge --yes \
 	imutils \
 	tesseract \
 	pytesseract \
-	jupyterlab_execute_time
+	jupyterlab_execute_time \
+	black
 	
 RUN	conda clean --all -y -f
 
